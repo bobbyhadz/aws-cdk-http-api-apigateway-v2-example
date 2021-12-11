@@ -1,5 +1,5 @@
 import {CorsHttpMethod, HttpApi, HttpMethod} from '@aws-cdk/aws-apigatewayv2';
-import {LambdaProxyIntegration} from '@aws-cdk/aws-apigatewayv2-integrations';
+import {HttpLambdaIntegration} from '@aws-cdk/aws-apigatewayv2-integrations';
 import * as lambda from '@aws-cdk/aws-lambda';
 import * as cdk from '@aws-cdk/core';
 import * as path from 'path';
@@ -42,9 +42,10 @@ export class CdkStarterStack extends cdk.Stack {
     httpApi.addRoutes({
       path: '/todos',
       methods: [HttpMethod.GET],
-      integration: new LambdaProxyIntegration({
-        handler: getTodosLambda,
-      }),
+      integration: new HttpLambdaIntegration(
+        'get-todos-integration',
+        getTodosLambda,
+      ),
     });
 
     // 👇 create delete-todos Lambda
@@ -58,9 +59,10 @@ export class CdkStarterStack extends cdk.Stack {
     httpApi.addRoutes({
       path: '/todos/{todoId}',
       methods: [HttpMethod.DELETE],
-      integration: new LambdaProxyIntegration({
-        handler: deleteTodoLambda,
-      }),
+      integration: new HttpLambdaIntegration(
+        'delete-todo-integration',
+        deleteTodoLambda,
+      ),
     });
 
     // 👇 add an Output with the API Url
