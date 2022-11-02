@@ -37,7 +37,7 @@ export class CdkStarterStack extends cdk.Stack {
 
     // 👇 create get-todos Lambda
     const getTodosLambda = new lambda.Function(this, 'get-todos', {
-      runtime: lambda.Runtime.NODEJS_14_X,
+      runtime: lambda.Runtime.NODEJS_16_X,
       handler: 'index.main',
       code: lambda.Code.fromAsset(path.join(__dirname, '/../src/get-todos')),
     });
@@ -54,7 +54,7 @@ export class CdkStarterStack extends cdk.Stack {
 
     // 👇 create delete-todos Lambda
     const deleteTodoLambda = new lambda.Function(this, 'delete-todo', {
-      runtime: lambda.Runtime.NODEJS_14_X,
+      runtime: lambda.Runtime.NODEJS_16_X,
       handler: 'index.main',
       code: lambda.Code.fromAsset(path.join(__dirname, '/../src/delete-todo')),
     });
