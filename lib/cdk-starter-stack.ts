@@ -1,9 +1,10 @@
+import {HttpLambdaIntegration} from 'aws-cdk-lib/aws-apigatewayv2-integrations';
 import {
   CorsHttpMethod,
   HttpApi,
   HttpMethod,
-} from '@aws-cdk/aws-apigatewayv2-alpha';
-import {HttpLambdaIntegration} from '@aws-cdk/aws-apigatewayv2-integrations-alpha';
+} from 'aws-cdk-lib/aws-apigatewayv2';
+
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as cdk from 'aws-cdk-lib';
 import * as path from 'path';
